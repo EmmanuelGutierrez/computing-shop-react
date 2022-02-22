@@ -7,10 +7,18 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    publicPath: "/",
   },
   mode: "development",
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
+    alias: {
+      "@components": path.resolve(__dirname, "src/components/"),
+      "@containers": path.resolve(__dirname, "src/containers/"),
+      "@pages": path.resolve(__dirname, "src/pages/"),
+      "@icons": path.resolve(__dirname, "src/assets/icons/"),
+      "@logos": path.resolve(__dirname, "src/assets/logos/"),
+    },
   },
   module: {
     rules: [
@@ -36,9 +44,13 @@ module.exports = {
         },
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(css|scss)$/,
         exclude: /node_modules/,
         use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        type: "asset",
       },
     ],
   },
@@ -53,6 +65,7 @@ module.exports = {
   ],
   devServer: {
     allowedHosts: path.join(__dirname, "dist"),
+    historyApiFallback: true,
     compress: true,
     port: 3005,
   },
