@@ -1,22 +1,58 @@
-import React from "react";
-import "../styles/ProductCard.scss";
+import React, { useContext } from "react";
+import "./ProductCard.scss";
 
-import addToCart from "../../assets/icons/bt_add_to_cart.svg";
+import addToCartIcon from "../../assets/icons/bt_add_to_cart.svg";
+import removeToCartIcon from "../../assets/icons/bt_remove_to_cart.svg";
+import { IProduct } from "../../interfaces/IProduct";
+import { AppContext, AppContextType } from "../../context/AppContext";
 
-const ProductCard = () => {
+const ProductCard = (prod: IProduct) => {
+  const { addToCart, removeToCart, state } = useContext(
+    AppContext
+  ) as AppContextType;
+
+  const handleClickAdd = (p: IProduct) => {
+    addToCart(p);
+  };
+
+  const handleClickRemove = (p: IProduct) => {
+    removeToCart(p);
+  };
+
+  /* if (!state.cart.some((p) => p._id === payload._id)) {
+    setState({
+      ...state,
+      cart: [...state.cart, payload],
+    });
+  } */
+
   return (
     <div className="ProductCard">
-      <img
-        src="https://images-ext-1.discordapp.net/external/EEifZyGqmx1LzAQP7qfOUkLC554tu1Y8FDUIBS7yPbU/%3Fauto%3Dcompress%26cs%3Dtinysrgb%26dpr%3D2%26h%3D650%26w%3D940/https/images.pexels.com/photos/3829226/pexels-photo-3829226.jpeg?width=1135&height=702"
-        alt="product"
-      />
+      <img src={prod.images[0].imageUrl} alt="product" />
       <div className="product-info">
         <div>
-          <p>$120,00</p>
-          <p>Teclado</p>
+          <p>$ {prod.price}</p>
+          <p>{prod.title}</p>
         </div>
+
         <figure>
-          <img src={addToCart} alt="add-to-cart" />
+          {state.cart.some((p) => p._id === prod._id) ? (
+            <img
+              onClick={() => {
+                handleClickRemove(prod);
+              }}
+              src={removeToCartIcon}
+              alt="add-to-cart"
+            />
+          ) : (
+            <img
+              onClick={() => {
+                handleClickAdd(prod);
+              }}
+              src={addToCartIcon}
+              alt="add-to-cart"
+            />
+          )}
         </figure>
       </div>
     </div>

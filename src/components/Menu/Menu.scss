@@ -1,38 +1,55 @@
-.desktop-menu {
+.Menu {
   width: 100px;
   height: auto;
-  border: 1px solid var(--very-light-pink);
+  border: 1px solid var(--light-neon-blue);
+  background-color: var(--black);
+  border-top: 0;
   padding: 20px 20px 0 20px;
+  position: absolute;
+  top: 59px;
+  right: 60px;
+  transition: 1s;
+  z-index: 1000;
 }
 
-.desktop-menu ul {
+.Menu ul {
   list-style: none;
   padding: 0%;
   margin: 0%;
 }
 
-.desktop-menu ul li {
+.Menu ul li {
   text-align: end;
 }
 
-.desktop-menu ul li:nth-child(1),
-.desktop-menu ul li:nth-child(2) {
+.Menu ul li:nth-child(1),
+.Menu ul li:nth-child(2) {
   font-weight: bold;
 }
 
-.desktop-menu ul li:last-child {
+.Menu ul li:last-child {
   padding-top: 20px;
   border-top: 1px solid var(--very-light-pink);
 }
 
-.desktop-menu ul li:last-child a {
+.Menu ul li:last-child a {
   color: var(--light-neon-blue);
   font-size: var(--sm);
 }
 
-.desktop-menu ul li a {
+.Menu ul li a {
   color: var(--white);
   text-decoration: none;
   display: inline-block;
   margin-bottom: 20px;
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+  transition: 0.5s;
+  border-radius: 5px;
+}
+
+.Menu ul li a:hover {
+  border-right: 3px solid var(--light-neon-blue);
+  border-left: 3px solid var(--light-neon-blue);
+  transition: 0.5s;
 }

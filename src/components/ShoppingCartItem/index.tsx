@@ -1,19 +1,67 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ShoppingCartItem.scss";
+import addToCartIcon from "../../assets/icons/bt_add_to_cart.svg";
+import removeToCartIcon from "../../assets/icons/bt_remove_to_cart.svg";
 
 import iconClose from "@icons/icon_close.png";
-const ShoppingCartItem = () => {
+import { IProduct } from "../../interfaces/IProduct";
+import { AppContext, AppContextType } from "../../context/AppContext";
+
+const ShoppingCartItem = (props: IProduct) => {
+  const { images, title, price, quantity } = props;
+  const { removeToCart, addToCart, decrementToCart } = useContext(
+    AppContext
+  ) as AppContextType;
+
+  const handleIncrementClick = () => {
+    addToCart(props);
+  };
+  const handleDecrementClick = () => {
+    decrementToCart(props);
+  };
+
   return (
-    <div className="ShoppingCartItem">
-      <figure>
-        <img
-          src="https://images-ext-1.discordapp.net/external/EEifZyGqmx1LzAQP7qfOUkLC554tu1Y8FDUIBS7yPbU/%3Fauto%3Dcompress%26cs%3Dtinysrgb%26dpr%3D2%26h%3D650%26w%3D940/https/images.pexels.com/photos/3829226/pexels-photo-3829226.jpeg?width=1135&height=702"
-          alt="keyboard"
-        />
-      </figure>
-      <p>keyboard</p>
-      <p>$8000,00</p>
-      <img src={iconClose} alt="close" />
+    <div className="ShoppingCartItemContainer">
+      <div className="ShoppingCartItem">
+        <figure>
+          <img src={images[0].imageUrl} alt={title} />
+        </figure>
+        <p>{title}</p>
+        <p>$ {quantity && price * quantity}</p>
+
+        {/* <img
+          src={iconClose}
+          alt="close"
+          onClick={() => {
+            removeToCart(props);
+          }}
+        /> */}
+      </div>
+      <div className="inputNumber">
+        {props.quantity === 1 ? (
+          <button
+            className="button primary-button tertiary-button"
+            onClick={handleDecrementClick}
+          >
+            x
+          </button>
+        ) : (
+          <button
+            className="button primary-button "
+            onClick={handleDecrementClick}
+          >
+            -
+          </button>
+        )}
+        <input type="number" value={quantity} />
+
+        <button
+          className="button primary-button"
+          onClick={handleIncrementClick}
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 };

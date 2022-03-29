@@ -1,13 +1,22 @@
 .ShoppingCart {
-  position: absolute;
   background-color: var(--transparent-white);
-  right: 0;
+  border-radius: 25px 0 0 25px;
+  position: fixed;
+  right: -600px;
+  top: 60px;
+  bottom: auto;
+  min-height: calc(100vh - 60px);
   width: 360px;
-  min-height: 100%;
-  height: auto;
   /* Se limita a la caja padre, el margin y padding no sobrepasaran la caja padre */
   box-sizing: border-box;
   padding: 24px;
+  transition: 850ms;
+  /* overflow-y: auto; */
+}
+
+.ShoppingCart.active {
+  right: 0;
+  transition: 350ms;
 }
 
 .title-container {
@@ -26,7 +35,7 @@
   grid-template-columns: auto 1fr;
   gap: 16px;
   align-items: center;
-  background-color: var(--light-neon-blue);
+  background-color: var(--dark-blue);
   margin-bottom: 24px;
   border-radius: 8px;
   padding: 0 24px;

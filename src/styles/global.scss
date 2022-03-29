@@ -7,6 +7,10 @@ body {
   background-color: #000000;
 }
 
+/* * {
+  box-sizing: border-box;
+}
+ */
 .title {
   font-size: var(--lg);
   margin-bottom: 12px;
@@ -59,6 +63,14 @@ body {
 
 .primary-button {
   background-color: var(--neon-blue);
+  color: var(--white);
+  width: 100%;
+  font-size: var(--md);
+  height: 50px;
+}
+
+.tertiary-button {
+  background-color: #c92f95;
   color: var(--white);
   width: 100%;
   font-size: var(--md);

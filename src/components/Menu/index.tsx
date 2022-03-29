@@ -3,12 +3,10 @@ import "./Menu.scss";
 
 const Menu = (): JSX.Element => {
   return (
-    <div className="desktop-menu">
+    <div className={`Menu `}>
       <ul>
         <li>
-          <a href="/" className="title">
-            My orders
-          </a>
+          <a href="/">My orders</a>
         </li>
         <li>
           <a href="/">My account</a>
