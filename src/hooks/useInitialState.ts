@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { IInitialState } from "../interfaces/IInitialState";
 import { IProduct } from "../interfaces/IProduct";
 
@@ -42,7 +42,7 @@ const useInitialState = () => {
     }
   };
 
-  const decrementToCart = (payload: IProduct) => {
+  const decrementCart = (payload: IProduct) => {
     const modPayload: IProduct = payload.quantity
       ? { ...payload, quantity: payload.quantity - 1 }
       : { ...payload, quantity: 0 };
@@ -66,7 +66,7 @@ const useInitialState = () => {
     state,
     addToCart,
     removeToCart,
-    decrementToCart,
+    decrementCart,
   };
 };
 

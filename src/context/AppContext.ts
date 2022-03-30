@@ -6,7 +6,7 @@ type AppContextType = {
   state: IInitialState;
   addToCart: (product: IProduct) => void;
   removeToCart: (product: IProduct) => void;
-  decrementToCart: (product: IProduct) => void;
+  decrementCart: (product: IProduct) => void;
 };
 
 const AppContext = React.createContext<AppContextType | Object>({});

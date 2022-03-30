@@ -1,9 +1,13 @@
 import React from "react";
 import "./Menu.scss";
 
-const Menu = (): JSX.Element => {
+interface props {
+  activeState: boolean;
+}
+
+const Menu = (props: props): JSX.Element => {
   return (
-    <div className={`Menu `}>
+    <div className={`Menu ${props.activeState && "Menu-active"}`}>
       <ul>
         <li>
           <a href="/">My orders</a>

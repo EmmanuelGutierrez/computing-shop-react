@@ -7,19 +7,32 @@ import { Logo } from "../Logo";
 import { Menu } from "../Menu";
 import { AppContext, AppContextType } from "../../context/AppContext";
 import { ShoppingCart } from "../../containers/ShoppingCart";
+import MobileMenu from "../MobileMenu";
 
 const Header = (): JSX.Element => {
   const { state } = useContext(AppContext) as AppContextType;
   const [toggle, setToggle] = useState(false);
   const [toggleOrders, setToggleOrders] = useState(false);
+  const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
 
   const handleToggle = () => {
     setToggle((prevState) => !prevState);
   };
 
   return (
-    <nav>
-      <img className="menu" src={menu} alt="icon-menu" />
+    <nav className="header">
+      <MobileMenu
+        menuToggle={toggleMobileMenu}
+        setMenuToggle={setToggleMobileMenu}
+      />
+      <img
+        className="menu cursor-pointer"
+        src={menu}
+        alt="icon-menu"
+        onClick={() => {
+          setToggleMobileMenu(!toggleMobileMenu);
+        }}
+      />
       <div className="navbar-left">
         <Logo />
         <ul>
@@ -45,20 +58,26 @@ const Header = (): JSX.Element => {
       </div>
       <div className="navbar-right">
         <ul>
-          <li className="navbar-email" onClick={handleToggle}>
-            example@example.com
+          <li
+            className="navbar-email"
+            onMouseEnter={handleToggle}
+            onMouseLeave={handleToggle}
+          >
+            <div className="navbar-email-text">
+              <p> example@example.com</p>
+            </div>
+            <Menu activeState={toggle} />
           </li>
-          <li className="navbar-shopping-cart">
-            <img
-              src={shoppingCart}
-              alt="shopping-cart"
-              onClick={() => setToggleOrders(!toggleOrders)}
-            />
+          <li
+            className="navbar-shopping-cart cursor-pointer"
+            onClick={() => setToggleOrders(!toggleOrders)}
+          >
+            <img src={shoppingCart} alt="shopping-cart" />
             {state.cart.length ? <div>{state.cart.length}</div> : null}
           </li>
         </ul>
       </div>
-      {toggle && <Menu />}
+
       <ShoppingCart activeState={toggleOrders} />
     </nav>
   );

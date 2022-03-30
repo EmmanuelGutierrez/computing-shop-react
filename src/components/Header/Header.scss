@@ -1,3 +1,14 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--black);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 25px;
+  z-index: 1003;
+}
+
 .menu {
   display: none;
 }
@@ -5,9 +16,9 @@
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 0 24px;
   border-bottom: 1px solid var(--light-neon-blue);
   position: relative;
+  box-sizing: border-box;
 }
 
 .navbar-left {
@@ -50,6 +61,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-color: var(--black);
   font-size: var(--sm);
   color: var(--very-light-pink);
   margin-right: 12px;
@@ -57,6 +69,12 @@ nav {
   text-align: center;
   cursor: pointer;
   height: 100%;
+}
+
+.navbar-email-text {
+  height: 100%;
+  background-color: var(--black);
+  z-index: 1001;
 }
 
 .navbar-shopping-cart {

@@ -5,12 +5,28 @@ body {
   margin: 0;
   color: var(--white);
   background-color: #000000;
+  padding-top: 60px;
 }
 
 /* * {
   box-sizing: border-box;
 }
  */
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #3b3b3b00;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--dark-blue);
+  border-radius: 45px;
+  width: 5px;
+  margin: 3px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
 .title {
   font-size: var(--lg);
   margin-bottom: 12px;

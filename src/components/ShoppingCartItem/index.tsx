@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
+import React, { ChangeEvent, ChangeEventHandler, useContext } from "react";
 import "./ShoppingCartItem.scss";
-import addToCartIcon from "../../assets/icons/bt_add_to_cart.svg";
-import removeToCartIcon from "../../assets/icons/bt_remove_to_cart.svg";
 
 import iconClose from "@icons/icon_close.png";
 import { IProduct } from "../../interfaces/IProduct";
@@ -9,15 +7,13 @@ import { AppContext, AppContextType } from "../../context/AppContext";
 
 const ShoppingCartItem = (props: IProduct) => {
   const { images, title, price, quantity } = props;
-  const { removeToCart, addToCart, decrementToCart } = useContext(
-    AppContext
-  ) as AppContextType;
+  const { addToCart, decrementCart } = useContext(AppContext) as AppContextType;
 
-  const handleIncrementClick = () => {
-    addToCart(props);
+  const handleIncrementClick = (prod: IProduct) => {
+    addToCart(prod);
   };
-  const handleDecrementClick = () => {
-    decrementToCart(props);
+  const handleDecrementClick = (prod: IProduct) => {
+    decrementCart(prod);
   };
 
   return (
@@ -41,23 +37,29 @@ const ShoppingCartItem = (props: IProduct) => {
         {props.quantity === 1 ? (
           <button
             className="button primary-button tertiary-button"
-            onClick={handleDecrementClick}
+            onClick={() => {
+              handleDecrementClick(props);
+            }}
           >
             x
           </button>
         ) : (
           <button
             className="button primary-button "
-            onClick={handleDecrementClick}
+            onClick={() => {
+              handleDecrementClick(props);
+            }}
           >
             -
           </button>
         )}
-        <input type="number" value={quantity} />
+        <input type="number" disabled value={quantity} />
 
         <button
           className="button primary-button"
-          onClick={handleIncrementClick}
+          onClick={() => {
+            handleIncrementClick(props);
+          }}
         >
           +
         </button>

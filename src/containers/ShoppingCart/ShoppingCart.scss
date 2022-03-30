@@ -1,22 +1,22 @@
 .ShoppingCart {
-  background-color: var(--transparent-white);
+  background-color: var(--black-grey);
   border-radius: 25px 0 0 25px;
   position: fixed;
   right: -600px;
-  top: 60px;
+  top: 61px;
   bottom: auto;
-  min-height: calc(100vh - 60px);
+  height: calc(100vh - 59px);
   width: 360px;
   /* Se limita a la caja padre, el margin y padding no sobrepasaran la caja padre */
   box-sizing: border-box;
   padding: 24px;
-  transition: 850ms;
-  /* overflow-y: auto; */
+  transition: 350ms;
+  overflow-y: scroll;
 }
 
 .ShoppingCart.active {
   right: 0;
-  transition: 350ms;
+  transition: 850ms;
 }
 
 .title-container {

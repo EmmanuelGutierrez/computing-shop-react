@@ -75,4 +75,8 @@
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
+
+  input[type="number"]:disabled {
+    background-color: var(--white);
+  }
 }

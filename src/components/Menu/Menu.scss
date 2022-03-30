@@ -6,10 +6,15 @@
   border-top: 0;
   padding: 20px 20px 0 20px;
   position: absolute;
-  top: 59px;
-  right: 60px;
+  top: -180px;
+  right: 62px;
   transition: 1s;
   z-index: 1000;
+  display: block;
+}
+
+.Menu-active {
+  top: 59px;
 }
 
 .Menu ul {
@@ -52,4 +57,10 @@
   border-right: 3px solid var(--light-neon-blue);
   border-left: 3px solid var(--light-neon-blue);
   transition: 0.5s;
+}
+
+@media (max-width: 640px) {
+  .Menu {
+    display: none;
+  }
 }
